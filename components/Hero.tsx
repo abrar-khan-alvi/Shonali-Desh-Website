@@ -98,12 +98,15 @@ const Hero: React.FC = () => {
               Join the Waitlist
               <ArrowRight className="w-5 h-5" />
             </a>
-            <button
+            <a
+              href="https://www.youtube.com/watch?v=oL2-B-sPhH4"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hero-cta px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/30 text-white text-lg font-semibold rounded-full hover:bg-white hover:text-primaryDark transition-all flex items-center justify-center gap-3 group"
             >
               <PlayCircle className="w-5 h-5 group-hover:scale-110 transition-transform" />
               Watch Demo
-            </button>
+            </a>
           </div>
         </div>
       </div>

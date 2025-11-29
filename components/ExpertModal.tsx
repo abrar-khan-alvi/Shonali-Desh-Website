@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { CheckCircle, Upload, ChevronRight, ChevronLeft, FileText, X, Sparkles, Award, Shield } from 'lucide-react';
 
 interface ExpertModalProps {
@@ -9,6 +9,18 @@ interface ExpertModalProps {
 const ExpertModal: React.FC<ExpertModalProps> = ({ isOpen, onClose }) => {
     const [step, setStep] = useState(1);
     const [isSubmitted, setIsSubmitted] = useState(false);
+
+    // Lock body scroll when modal is open
+    useEffect(() => {
+        if (isOpen) {
+            document.body.classList.add('modal-open');
+        } else {
+            document.body.classList.remove('modal-open');
+        }
+        return () => {
+            document.body.classList.remove('modal-open');
+        };
+    }, [isOpen]);
 
     const handleNext = () => setStep(prev => prev + 1);
     const handleBack = () => setStep(prev => prev - 1);
@@ -70,7 +82,7 @@ const ExpertModal: React.FC<ExpertModalProps> = ({ isOpen, onClose }) => {
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 animate-fadeIn">
             <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-primary/20 to-black/80 backdrop-blur-md" onClick={handleClose}></div>
 
-            <div className="relative bg-gradient-to-br from-white via-green-50/30 to-white rounded-3xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden animate-scaleIn border border-green-200/50">
+            <div className="relative bg-gradient-to-br from-white via-green-50/30 to-white rounded-3xl shadow-2xl max-w-4xl w-full max-h-[90vh] animate-scaleIn border border-green-200/50 modal-content">
                 {/* Decorative Background */}
                 <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-primary/10 to-transparent rounded-full blur-3xl"></div>
                 <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-green-300/10 to-transparent rounded-full blur-3xl"></div>
@@ -109,7 +121,7 @@ const ExpertModal: React.FC<ExpertModalProps> = ({ isOpen, onClose }) => {
                     </div>
                 </div>
 
-                <form onSubmit={handleSubmit} className="p-8 overflow-y-auto max-h-[calc(90vh-200px)]">
+                <form onSubmit={handleSubmit} className="relative z-10 p-8 overflow-y-auto max-h-[calc(90vh-200px)]">
 
                     {/* Step 1 */}
                     {step === 1 && (
@@ -223,11 +235,9 @@ const ExpertModal: React.FC<ExpertModalProps> = ({ isOpen, onClose }) => {
                                 <label className="block text-sm font-semibold text-gray-700">Areas of Specialization *</label>
                                 <div className="grid grid-cols-2 gap-3">
                                     {['Soil Science', 'Pest Management', 'Crop Disease', 'Irrigation', 'Organic Farming', 'Agro-Economics'].map((spec) => (
-                                        <label key={spec} className="group relative">
-                                            <input type="checkbox" className="peer sr-only" />
-                                            <div className="p-4 border-2 border-gray-200 rounded-xl cursor-pointer transition-all hover:border-primary peer-checked:border-primary peer-checked:bg-green-50 peer-checked:shadow-md">
-                                                <span className="text-gray-700 font-medium text-sm">{spec}</span>
-                                            </div>
+                                        <label key={spec} className="group relative flex items-center gap-3 p-4 border-2 border-gray-200 rounded-xl cursor-pointer transition-all hover:border-primary has-[:checked]:border-primary has-[:checked]:bg-green-50 has-[:checked]:shadow-md">
+                                            <input type="checkbox" className="w-5 h-5 text-primary rounded focus:ring-primary accent-primary cursor-pointer" />
+                                            <span className="text-gray-700 font-medium text-sm">{spec}</span>
                                         </label>
                                     ))}
                                 </div>
@@ -302,12 +312,17 @@ const ExpertModal: React.FC<ExpertModalProps> = ({ isOpen, onClose }) => {
                             </div>
 
                             <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-2xl border-2 border-green-200">
-                                <label className="flex items-start gap-4 cursor-pointer group">
-                                    <input type="checkbox" className="mt-1 w-5 h-5 text-primary rounded focus:ring-primary accent-primary" required />
-                                    <span className="text-sm text-gray-700 leading-relaxed">
-                                        I agree to the <a href="#" className="text-primary font-semibold hover:underline">Expert Terms of Service</a> and confirm that all provided information is accurate. I understand that providing false information may lead to account termination.
-                                    </span>
-                                </label>
+                                <div className="flex items-start gap-4">
+                                    <input
+                                        id="terms-checkbox"
+                                        type="checkbox"
+                                        className="mt-1 w-5 h-5 text-primary rounded focus:ring-primary accent-primary cursor-pointer"
+                                        required
+                                    />
+                                    <label htmlFor="terms-checkbox" className="text-sm text-gray-700 leading-relaxed cursor-pointer">
+                                        I agree to the <a href="#" className="text-primary font-semibold hover:underline relative z-20" onClick={(e) => e.stopPropagation()}>Expert Terms of Service</a> and confirm that all provided information is accurate. I understand that providing false information may lead to account termination.
+                                    </label>
+                                </div>
                             </div>
 
                             <div className="pt-6 flex justify-between">
