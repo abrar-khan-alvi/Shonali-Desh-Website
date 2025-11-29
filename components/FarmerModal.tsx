@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Download, MapPin, Shield, Star, X, Sparkles, Zap, CheckCircle2 } from 'lucide-react';
 
 interface FarmerModalProps {
@@ -7,6 +7,18 @@ interface FarmerModalProps {
 }
 
 const FarmerModal: React.FC<FarmerModalProps> = ({ isOpen, onClose }) => {
+    // Lock body scroll when modal is open
+    useEffect(() => {
+        if (isOpen) {
+            document.body.classList.add('modal-open');
+        } else {
+            document.body.classList.remove('modal-open');
+        }
+        return () => {
+            document.body.classList.remove('modal-open');
+        };
+    }, [isOpen]);
+
     if (!isOpen) return null;
 
     return (
@@ -18,7 +30,7 @@ const FarmerModal: React.FC<FarmerModalProps> = ({ isOpen, onClose }) => {
             ></div>
 
             {/* Modal Content */}
-            <div className="relative bg-gradient-to-br from-white via-green-50/50 to-white rounded-3xl max-w-6xl w-full max-h-[90vh] overflow-y-auto shadow-2xl animate-scaleIn border border-green-200/50">
+            <div className="relative bg-gradient-to-br from-white via-green-50/50 to-white rounded-3xl max-w-6xl w-full max-h-[90vh] shadow-2xl animate-scaleIn border border-green-200/50 modal-content">
                 {/* Decorative Elements */}
                 <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-primary/20 to-transparent rounded-full blur-3xl"></div>
                 <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-green-300/10 to-transparent rounded-full blur-3xl"></div>

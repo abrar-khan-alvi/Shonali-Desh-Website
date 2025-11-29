@@ -151,12 +151,12 @@ const JoinUs: React.FC = () => {
         </div>
 
         {/* Cards Container */}
-        <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto h-[600px] md:h-[500px]">
+        <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto md:h-[500px]">
 
           {/* Farmer Card */}
           <div
             ref={farmerCardRef}
-            className={`perspective-card relative w-full h-full rounded-3xl cursor-pointer group transition-all duration-500 ${hoveredCard === 'expert' ? 'blur-sm opacity-50 scale-95' : 'opacity-100 scale-100'}`}
+            className={`perspective-card relative w-full h-[500px] md:h-full rounded-3xl cursor-pointer group transition-all duration-500 ${hoveredCard === 'expert' ? 'blur-sm opacity-50 scale-95' : 'opacity-100 scale-100'}`}
             onMouseMove={(e) => handleMouseMove(e, farmerCardRef)}
             onMouseLeave={() => handleMouseLeave(farmerCardRef)}
             onMouseEnter={() => setHoveredCard('farmer')}
@@ -203,7 +203,7 @@ const JoinUs: React.FC = () => {
           {/* Expert Card */}
           <div
             ref={expertCardRef}
-            className={`perspective-card relative w-full h-full rounded-3xl cursor-pointer group transition-all duration-500 ${hoveredCard === 'farmer' ? 'blur-sm opacity-50 scale-95' : 'opacity-100 scale-100'}`}
+            className={`perspective-card relative w-full h-[500px] md:h-full rounded-3xl cursor-pointer group transition-all duration-500 ${hoveredCard === 'farmer' ? 'blur-sm opacity-50 scale-95' : 'opacity-100 scale-100'}`}
             onMouseMove={(e) => handleMouseMove(e, expertCardRef)}
             onMouseLeave={() => handleMouseLeave(expertCardRef)}
             onMouseEnter={() => setHoveredCard('expert')}
