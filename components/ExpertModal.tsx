@@ -97,10 +97,6 @@ const ExpertModal: React.FC<ExpertModalProps> = ({ isOpen, onClose }) => {
                                     <div className="text-green-100 text-sm">Join our verified network</div>
                                 </div>
                             </div>
-                            <div className="text-right">
-                                <div className="text-sm opacity-80">Step</div>
-                                <div className="text-2xl font-bold">{step}/3</div>
-                            </div>
                         </div>
 
                         {/* Progress Bar */}
