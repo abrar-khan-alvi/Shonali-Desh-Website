@@ -187,7 +187,7 @@ const JoinUs: React.FC = () => {
                 </p>
 
                 <button onClick={() => setIsExpertModalOpen(true)} className="flex items-center gap-4 text-white font-bold text-lg group/btn w-fit">
-                  <span className="border-b-2 border-accent pb-1">Apply for Access</span>
+                  <span className="border-b-2 border-accent pb-1">Join as Expert</span>
                   <div className="bg-accent p-2 rounded-full transform group-hover/btn:translate-x-2 transition-transform">
                     <ArrowRight size={20} />
                   </div>
