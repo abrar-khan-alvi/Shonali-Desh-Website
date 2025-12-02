@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ShieldCheck, MessageSquare, MapPin, Zap, Activity } from 'lucide-react';
+import { ShieldCheck, MessageSquare, MapPin, Zap, Activity, Leaf } from 'lucide-react';
 
 const Features: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -44,6 +44,15 @@ const Features: React.FC = () => {
       icon: <MessageSquare className="text-white" size={24} />,
       color: "bg-accent",
       image: "/images/AI Crop Doctor.png",
+    },
+    {
+      id: 5,
+      title: "Carbon Footprint Reduction",
+      subtitle: "Sustainable farming for a greener future.",
+      description: "Our AI suggests eco-friendly farming practices that optimize resource usage, reducing your carbon footprint while maximizing yield.",
+      icon: <Leaf className="text-white" size={24} />,
+      color: "bg-green-600",
+      image: "https://teraoasia.com/wp-content/uploads/2024/08/1-1024x726.jpg",
     },
   ];
 
@@ -101,7 +110,7 @@ const Features: React.FC = () => {
                 id={`feature-img-${index}`}
                 src={feature.image}
                 alt={feature.title}
-                className={`feature-img absolute inset-0 w-full h-full object-contain transition-all duration-700 ${index === 0 ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
+                className={`feature-img absolute inset-0 w-full h-full object-cover transition-all duration-700 ${index === 0 ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
               />
             ))}
             {/* Decorative Overlay */}
@@ -125,7 +134,7 @@ const Features: React.FC = () => {
             >
               {/* Mobile Image (Visible only on mobile) */}
               <div className="md:hidden mb-8 rounded-xl overflow-hidden shadow-lg h-64">
-                <img src={feature.image} alt={feature.title} className="w-full h-full object-contain" />
+                <img src={feature.image} alt={feature.title} className="w-full h-full object-cover" />
               </div>
 
               <div className={`w-12 h-12 rounded-xl ${feature.color} flex items-center justify-center mb-6 shadow-lg transform -rotate-3`}>

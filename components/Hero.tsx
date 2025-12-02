@@ -92,13 +92,6 @@ const Hero: React.FC = () => {
 
           <div className="flex flex-col sm:flex-row gap-5">
             <a
-              href="#waitlist"
-              className="hero-cta px-8 py-4 bg-primary text-white text-lg font-bold rounded-full hover:bg-primaryDark hover:scale-105 transition-all shadow-[0_0_30px_rgba(39,103,73,0.5)] flex items-center justify-center gap-2"
-            >
-              Join the Waitlist
-              <ArrowRight className="w-5 h-5" />
-            </a>
-            <a
               href="https://www.youtube.com/watch?v=oL2-B-sPhH4"
               target="_blank"
               rel="noopener noreferrer"
