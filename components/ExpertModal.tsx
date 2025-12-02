@@ -36,6 +36,7 @@ const ExpertModal: React.FC<ExpertModalProps> = ({ isOpen, onClose }) => {
         division: '',
         district: '',
         upazila: '',
+        address: '',
 
         // Professional Details
         qualification: '',
@@ -188,7 +189,7 @@ const ExpertModal: React.FC<ExpertModalProps> = ({ isOpen, onClose }) => {
                     region: formData.division,
                     district: formData.district,
                     upazila: formData.upazila,
-                    village: ""
+                    village: formData.address
                 },
                 educationalQualification: formData.qualification,
                 currentAffiliation: formData.affiliation,
@@ -261,6 +262,7 @@ const ExpertModal: React.FC<ExpertModalProps> = ({ isOpen, onClose }) => {
             division: '',
             district: '',
             upazila: '',
+            address: '',
             qualification: '',
             affiliation: '',
             experience: '',
@@ -461,6 +463,19 @@ const ExpertModal: React.FC<ExpertModalProps> = ({ isOpen, onClose }) => {
                                         ))}
                                     </select>
                                 </div>
+                            </div>
+
+                            <div className="space-y-2">
+                                <label className="block text-sm font-semibold text-gray-700">Address (Village/Area) *</label>
+                                <input
+                                    type="text"
+                                    name="address"
+                                    value={formData.address}
+                                    onChange={handleInputChange}
+                                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all hover:border-gray-300"
+                                    placeholder="Enter your village or area name"
+                                    required
+                                />
                             </div>
 
                             <div className="pt-6 flex justify-end">
