@@ -66,7 +66,7 @@ const Navbar: React.FC = () => {
                 : 'bg-white text-primary hover:bg-gray-100'
                 }`}
             >
-              Apply for Access
+              Join as Expert
             </button>
           </div>
 
