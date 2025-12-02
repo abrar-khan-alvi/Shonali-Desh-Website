@@ -105,7 +105,7 @@ const Navbar: React.FC = () => {
             }}
             className="mt-4 px-8 py-3 bg-primary text-white rounded-full font-semibold shadow-md active:scale-95 transition-transform"
           >
-            Apply for Access
+            Join as Expert
           </button>
         </div>
       </nav>
